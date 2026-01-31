@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <img 
-                src="https://placehold.co/100x100/2596BE/ffffff?text=PT" 
+                src="/assets/images/logo.png" 
                 alt="ParoTeen Logo" 
                 className="h-10 w-10 rounded-lg object-contain"
               />

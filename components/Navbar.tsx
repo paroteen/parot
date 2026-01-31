@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2" onClick={closeMenu}>
             <img 
-              src="https://placehold.co/100x100/2596BE/ffffff?text=PT" 
+              src="/assets/images/logo.png" 
               alt="ParoTeen Logo" 
               className="h-10 w-10 rounded-lg object-contain"
             />
