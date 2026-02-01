@@ -4,6 +4,8 @@ import { ArrowRight, Code, Shield, Brain, Users, Globe2, Trophy } from 'lucide-r
 import AnimatedBackground from '../components/AnimatedBackground';
 import ScrollReveal from '../components/ScrollReveal';
 import GlowLine from '../components/GlowLine';
+import MagnetLines from '../components/MagnetLines';
+import Lightning from '../components/Lightning';
 
 const Home: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -29,6 +31,20 @@ const Home: React.FC = () => {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 cyber-grid opacity-30"></div>
           <AnimatedBackground />
+          <div className="absolute inset-0 flex items-center justify-center opacity-30 pointer-events-none">
+            <MagnetLines 
+              rows={12} 
+              columns={12} 
+              containerSize="100vmin"
+              lineColor="rgba(37, 150, 190, 0.4)"
+              lineWidth="2px"
+              lineHeight="40px"
+              baseAngle={-10}
+            />
+          </div>
+          <div className="absolute inset-0 opacity-40 pointer-events-none">
+            <Lightning hue={200} xOffset={0} speed={0.8} intensity={0.6} size={1.2} />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-r from-parodark/95 via-paroblue/90 to-parodark/95"></div>
           <div 
             className="absolute inset-0 opacity-20"

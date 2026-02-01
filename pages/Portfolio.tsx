@@ -2,6 +2,7 @@ import React from 'react';
 import { Project } from '../types';
 import ScrollReveal from '../components/ScrollReveal';
 import GlowLine from '../components/GlowLine';
+import Lightning from '../components/Lightning';
 
 const Portfolio: React.FC = () => {
   const projects: Project[] = [
@@ -35,6 +36,9 @@ const Portfolio: React.FC = () => {
       {/* Portfolio Header */}
       <section className="bg-gradient-to-br from-paroblue via-paroblue to-parodark text-white py-24 relative overflow-hidden">
         <div className="absolute inset-0 cyber-grid opacity-10"></div>
+        <div className="absolute inset-0 opacity-40 pointer-events-none">
+          <Lightning hue={200} xOffset={0.15} speed={0.9} intensity={0.6} size={1.2} />
+        </div>
         <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
           <ScrollReveal direction="fade">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 glow-text">Our Work & Impact</h1>

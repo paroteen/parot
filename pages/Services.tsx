@@ -4,6 +4,8 @@ import { CheckCircle2, Code, MessageSquare, ShieldAlert, Monitor, Users, Databas
 import { Service } from '../types';
 import ScrollReveal from '../components/ScrollReveal';
 import GlowLine from '../components/GlowLine';
+import MagnetLines from '../components/MagnetLines';
+import Lightning from '../components/Lightning';
 
 const Services: React.FC = () => {
   const services: Service[] = [
@@ -66,6 +68,20 @@ const Services: React.FC = () => {
   return (
     <div className="bg-gradient-to-b from-gray-50 to-white min-h-screen py-16 relative overflow-hidden">
       <div className="absolute inset-0 cyber-grid opacity-5"></div>
+      <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+        <MagnetLines 
+          rows={10} 
+          columns={10} 
+          containerSize="90vmin"
+          lineColor="rgba(37, 150, 190, 0.3)"
+          lineWidth="1.5px"
+          lineHeight="35px"
+          baseAngle={-10}
+        />
+      </div>
+      <div className="absolute inset-0 opacity-30 pointer-events-none">
+        <Lightning hue={210} xOffset={0.2} speed={0.6} intensity={0.4} size={1.0} />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal direction="fade">
           <div className="text-center mb-20">

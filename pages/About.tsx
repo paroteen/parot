@@ -2,6 +2,8 @@ import React from 'react';
 import { Target, Heart, Globe, User } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import GlowLine from '../components/GlowLine';
+import MagnetLines from '../components/MagnetLines';
+import Lightning from '../components/Lightning';
 
 const About: React.FC = () => {
   return (
@@ -9,6 +11,20 @@ const About: React.FC = () => {
       {/* Header */}
       <div className="bg-gradient-to-br from-parodark via-paroblue to-parodark text-white py-24 relative overflow-hidden">
         <div className="absolute inset-0 cyber-grid opacity-10"></div>
+        <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
+          <MagnetLines 
+            rows={11} 
+            columns={11} 
+            containerSize="95vmin"
+            lineColor="rgba(255, 255, 255, 0.3)"
+            lineWidth="1.5px"
+            lineHeight="38px"
+            baseAngle={-10}
+          />
+        </div>
+        <div className="absolute inset-0 opacity-35 pointer-events-none">
+          <Lightning hue={200} xOffset={-0.1} speed={0.7} intensity={0.5} size={1.1} />
+        </div>
         <div className="absolute inset-0 opacity-30">
           <img src="https://picsum.photos/seed/office/1920/600" className="w-full h-full object-cover" alt="Office" />
         </div>

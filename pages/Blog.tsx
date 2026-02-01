@@ -3,6 +3,7 @@ import { Calendar, User, ArrowRight } from 'lucide-react';
 import { BlogPost } from '../types';
 import ScrollReveal from '../components/ScrollReveal';
 import GlowLine from '../components/GlowLine';
+import Lightning from '../components/Lightning';
 
 const Blog: React.FC = () => {
   const posts: BlogPost[] = [
@@ -35,6 +36,9 @@ const Blog: React.FC = () => {
   return (
     <div className="bg-gradient-to-b from-white to-gray-50 min-h-screen py-16 relative overflow-hidden">
       <div className="absolute inset-0 cyber-grid opacity-5"></div>
+      <div className="absolute inset-0 opacity-25 pointer-events-none">
+        <Lightning hue={230} xOffset={0.1} speed={0.7} intensity={0.35} size={1.0} />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal direction="fade">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">

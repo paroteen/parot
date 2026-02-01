@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import GlowLine from '../components/GlowLine';
+import Lightning from '../components/Lightning';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -28,6 +29,9 @@ const Contact: React.FC = () => {
   return (
     <div className="w-full bg-gradient-to-b from-gray-50 to-white min-h-screen py-16 relative overflow-hidden">
       <div className="absolute inset-0 cyber-grid opacity-5"></div>
+      <div className="absolute inset-0 opacity-25 pointer-events-none">
+        <Lightning hue={220} xOffset={-0.2} speed={0.5} intensity={0.3} size={0.9} />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           
