@@ -49,8 +49,8 @@ const Home: React.FC = () => {
           <div 
             className="absolute inset-0 opacity-20"
             style={{
-              background: 'radial-gradient(circle at 20% 50%, rgba(37, 150, 190, 0.3) 0%, transparent 50%),
-                           radial-gradient(circle at 80% 80%, rgba(255, 165, 0, 0.2) 0%, transparent 50%)',
+              background: `radial-gradient(circle at 20% 50%, rgba(37, 150, 190, 0.3) 0%, transparent 50%),
+                           radial-gradient(circle at 80% 80%, rgba(255, 165, 0, 0.2) 0%, transparent 50%)`,
             }}
           ></div>
         </div>
