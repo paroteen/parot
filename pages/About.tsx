@@ -1,32 +1,16 @@
 import React from 'react';
-import { Target, Heart, Globe, User } from 'lucide-react';
+import { Target, Heart, Globe } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import GlowLine from '../components/GlowLine';
-import MagnetLines from '../components/MagnetLines';
-import Lightning from '../components/Lightning';
 
 const About: React.FC = () => {
   return (
-    <div className="w-full bg-white">
+    <div className="w-full">
       {/* Header */}
-      <div className="bg-gradient-to-br from-parodark via-paroblue to-parodark text-white py-24 relative overflow-hidden">
-        <div className="absolute inset-0 cyber-grid opacity-10"></div>
-        <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
-          <MagnetLines 
-            rows={11} 
-            columns={11} 
-            containerSize="95vmin"
-            lineColor="rgba(255, 255, 255, 0.3)"
-            lineWidth="1.5px"
-            lineHeight="38px"
-            baseAngle={-10}
-          />
-        </div>
-        <div className="absolute inset-0 opacity-35 pointer-events-none">
-          <Lightning hue={200} xOffset={-0.1} speed={0.7} intensity={0.5} size={1.1} />
-        </div>
+      <div className="py-24 relative">
         <div className="absolute inset-0 opacity-30">
-          <img src="https://picsum.photos/seed/office/1920/600" className="w-full h-full object-cover" alt="Office" />
+          <img src="https://picsum.photos/seed/office/1920/600" className="w-full h-full object-cover rounded-3xl" alt="Office" />
+          <div className="absolute inset-0 bg-black/60 rounded-3xl"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
           <ScrollReveal direction="fade">
@@ -40,40 +24,40 @@ const About: React.FC = () => {
       </div>
 
       {/* Mission & Story */}
-      <section className="py-24 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <ScrollReveal direction="right">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
                 Who <span className="gradient-text">We Are</span>
               </h2>
-              <p className="text-gray-600 mb-6 leading-relaxed text-lg">
+              <p className="text-slate-400 mb-6 leading-relaxed text-lg">
                 ParoTeen Inc. is a premier global IT service consultancy. Born from a passion for technology and education, we operate across Rwanda, the United States, and Asia.
               </p>
-              <p className="text-gray-600 mb-8 leading-relaxed text-lg">
+              <p className="text-slate-400 mb-8 leading-relaxed text-lg">
                 We don't just build software; we build capacity. Our unique approach combines high-end development services with rigorous training programs in AI and Cybersecurity, ensuring our partners aren't just consumers of tech, but masters of it.
               </p>
-              
+
               <div className="space-y-6 mt-10">
                 <ScrollReveal direction="left" delay={200}>
-                  <div className="card-cyber flex items-start gap-5 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl border border-gray-100 group">
-                    <div className="p-4 bg-blue-50 rounded-xl text-paroblue group-hover:bg-paroblue group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-6">
+                  <div className="glass flex items-start gap-5 p-6 rounded-xl shadow-lg hover:shadow-xl border border-white/10 group">
+                    <div className="p-4 bg-blue-500/10 rounded-xl text-paroblue group-hover:bg-paroblue group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-6">
                       <Target size={28} />
                     </div>
                     <div>
-                      <h3 className="font-bold text-xl text-gray-900 mb-2 group-hover:text-paroblue transition-colors">Our Mission</h3>
-                      <p className="text-gray-600 leading-relaxed">To empower businesses and individuals with innovative tech solutions, AI tools, and cybersecurity knowledge while fostering global collaboration.</p>
+                      <h3 className="font-bold text-xl text-white mb-2 group-hover:text-paroblue transition-colors">Our Mission</h3>
+                      <p className="text-slate-400 leading-relaxed">To empower businesses and individuals with innovative tech solutions, AI tools, and cybersecurity knowledge while fostering global collaboration.</p>
                     </div>
                   </div>
                 </ScrollReveal>
                 <ScrollReveal direction="left" delay={300}>
-                  <div className="card-cyber flex items-start gap-5 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl border border-gray-100 group">
-                    <div className="p-4 bg-orange-50 rounded-xl text-paroorange group-hover:bg-paroorange group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-6">
+                  <div className="glass flex items-start gap-5 p-6 rounded-xl shadow-lg hover:shadow-xl border border-white/10 group">
+                    <div className="p-4 bg-orange-500/10 rounded-xl text-paroorange group-hover:bg-paroorange group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-6">
                       <Heart size={28} />
                     </div>
                     <div>
-                      <h3 className="font-bold text-xl text-gray-900 mb-2 group-hover:text-paroorange transition-colors">Our Values</h3>
-                      <p className="text-gray-600 leading-relaxed">Innovation, Integrity, Education, and Global Connectivity.</p>
+                      <h3 className="font-bold text-xl text-white mb-2 group-hover:text-paroorange transition-colors">Our Values</h3>
+                      <p className="text-slate-400 leading-relaxed">Innovation, Integrity, Education, and Global Connectivity.</p>
                     </div>
                   </div>
                 </ScrollReveal>
@@ -82,15 +66,15 @@ const About: React.FC = () => {
             <ScrollReveal direction="left">
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-br from-paroblue to-paroorange rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500 opacity-20"></div>
-                <img 
-                  src="https://picsum.photos/seed/teamwork/600/800" 
-                  alt="Team collaboration" 
+                <img
+                  src="https://picsum.photos/seed/teamwork/600/800"
+                  alt="Team collaboration"
                   className="rounded-2xl shadow-2xl w-full object-cover h-[500px] relative z-10 transform group-hover:scale-105 transition-transform duration-500"
                 />
                 <ScrollReveal direction="up" delay={400}>
-                  <div className="absolute -bottom-8 -left-8 bg-white p-8 rounded-2xl shadow-2xl border border-gray-100 max-w-xs hidden md:block card-cyber">
+                  <div className="absolute -bottom-8 -left-8 glass p-8 rounded-2xl shadow-2xl border border-white/10 max-w-xs hidden md:block">
                     <p className="text-paroblue font-bold text-5xl mb-3 glow-text">3+</p>
-                    <p className="text-gray-600 leading-relaxed">Continents served with dedicated teams in Africa, Asia, and North America.</p>
+                    <p className="text-slate-400 leading-relaxed">Continents served with dedicated teams in Africa, Asia, and North America.</p>
                   </div>
                 </ScrollReveal>
               </div>
@@ -100,11 +84,11 @@ const About: React.FC = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section className="py-24 relative">
         <div className="absolute inset-0 cyber-grid opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
           <ScrollReveal direction="fade">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               Meet Our <span className="gradient-text">Leadership</span>
             </h2>
             <GlowLine className="max-w-md mx-auto mb-12" />
@@ -112,13 +96,13 @@ const About: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[1, 2, 3, 4].map((i) => (
               <ScrollReveal key={i} direction="up" delay={i * 100}>
-                <div className="card-cyber bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group">
+                <div className="glass p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group border border-white/10">
                   <div className="w-28 h-28 bg-gray-200 rounded-full mx-auto mb-6 overflow-hidden transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                     <img src={`https://picsum.photos/seed/face${i}/200/200`} alt="Team Member" className="w-full h-full object-cover" />
                   </div>
-                  <h3 className="font-bold text-xl mb-2 group-hover:text-paroblue transition-colors">Tech Leader {i}</h3>
+                  <h3 className="font-bold text-xl mb-2 group-hover:text-paroblue transition-colors text-white">Tech Leader {i}</h3>
                   <p className="text-paroblue text-sm mb-4 font-semibold">Senior Developer</p>
-                  <div className="flex justify-center items-center text-gray-400 text-sm gap-2 group-hover:text-paroblue transition-colors">
+                  <div className="flex justify-center items-center text-slate-500 text-sm gap-2 group-hover:text-paroblue transition-colors">
                     <Globe size={14} />
                     <span>{i % 2 === 0 ? 'Rwanda' : 'USA'}</span>
                   </div>

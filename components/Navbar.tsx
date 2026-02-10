@@ -31,20 +31,19 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav 
+    <nav
       ref={navRef}
-      className={`fixed w-full z-50 backdrop-blur-md border-b transition-all duration-500 h-16 ${
-        scrolled 
-          ? 'bg-white/98 shadow-lg border-gray-200/50' 
-          : 'bg-white/95 shadow-sm border-gray-100'
-      }`}
+      className={`fixed w-full z-50 backdrop-blur-md border-b transition-all duration-500 h-16 ${scrolled
+        ? 'bg-black/80 shadow-lg border-indigo-500/20'
+        : 'bg-transparent shadow-none border-transparent'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex justify-between items-center h-full">
           {/* Logo */}
-          <Link 
-            to="/" 
-            className="flex items-center space-x-2 group magnetic" 
+          <Link
+            to="/"
+            className="flex items-center space-x-2 group magnetic"
             onClick={closeMenu}
             onMouseMove={(e) => {
               const rect = e.currentTarget.getBoundingClientRect();
@@ -56,16 +55,13 @@ const Navbar: React.FC = () => {
               e.currentTarget.style.transform = 'translate(0, 0)';
             }}
           >
-            <div className="relative">
-              <img 
-                src="/assets/images/logo.jpg" 
-                alt="ParoTeen Logo" 
-                className="h-10 w-10 rounded-lg object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
+            <span className="font-bold text-xl text-white tracking-tight flex items-center transition-colors duration-300 group-hover:text-paroblue">
+              <img
+                src="/assets/images/logo.png"
+                alt="P"
+                className="h-8 w-8 mt-1 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
               />
-              <div className="absolute inset-0 rounded-lg bg-paroblue/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm -z-10"></div>
-            </div>
-            <span className="font-bold text-xl text-parodark tracking-tight transition-colors duration-300 group-hover:text-paroblue">
-              Paro<span className="text-paroblue group-hover:text-paroorange transition-colors duration-300">Teen</span> Inc.
+              aroTeen&nbsp;Inc.
             </span>
           </Link>
 
@@ -75,11 +71,10 @@ const Navbar: React.FC = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`relative text-sm font-medium transition-all duration-300 group ${
-                  isActive(link.path)
-                    ? 'text-paroblue'
-                    : 'text-gray-600 hover:text-paroblue'
-                }`}
+                className={`relative text-sm font-medium transition-all duration-300 group ${isActive(link.path)
+                  ? 'text-white font-bold'
+                  : 'text-white/80 hover:text-white'
+                  }`}
                 style={{
                   animation: `fade-in-up 0.6s ease forwards`,
                   animationDelay: `${index * 0.1}s`,
@@ -105,7 +100,7 @@ const Navbar: React.FC = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={toggleMenu}
-              className="text-gray-600 hover:text-paroblue focus:outline-none"
+              className="text-white hover:text-slate-200 focus:outline-none"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -115,8 +110,8 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div 
-          className="md:hidden bg-white/98 backdrop-blur-md border-t border-gray-100 absolute w-full shadow-xl"
+        <div
+          className="md:hidden bg-black/95 backdrop-blur-md border-t border-gray-800 absolute w-full shadow-xl"
           style={{
             animation: 'slide-in-down 0.3s ease-out',
           }}
@@ -127,11 +122,10 @@ const Navbar: React.FC = () => {
                 key={link.name}
                 to={link.path}
                 onClick={closeMenu}
-                className={`block px-3 py-3 rounded-md text-base font-medium transition-all duration-300 hover:pl-5 ${
-                  isActive(link.path)
-                    ? 'text-paroblue bg-blue-50'
-                    : 'text-gray-600 hover:text-paroblue hover:bg-gray-50'
-                }`}
+                className={`block px-3 py-3 rounded-md text-base font-medium transition-all duration-300 hover:pl-5 ${isActive(link.path)
+                  ? 'text-white bg-white/10 font-bold'
+                  : 'text-white/80 hover:text-white hover:bg-white/5'
+                  }`}
                 style={{
                   animation: `fade-in-left 0.4s ease forwards`,
                   animationDelay: `${index * 0.05}s`,
@@ -142,10 +136,10 @@ const Navbar: React.FC = () => {
               </Link>
             ))}
             <div className="pt-4 mt-2 border-t border-gray-100">
-                <div className="flex items-center gap-2 text-sm text-gray-500 mb-4 px-3">
-                    <Globe size={16} />
-                    <span>Rwanda • USA • Asia</span>
-                </div>
+              <div className="flex items-center gap-2 text-sm text-slate-400 mb-4 px-3">
+                <Globe size={16} />
+                <span>Rwanda • USA • Asia</span>
+              </div>
               <Link
                 to="/contact"
                 onClick={closeMenu}

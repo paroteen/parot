@@ -4,24 +4,20 @@ import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'luc
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gradient-to-br from-parodark via-parodark to-paroblue text-white pt-16 pb-8 relative overflow-hidden">
-      <div className="absolute inset-0 cyber-grid opacity-5"></div>
+    <footer className="pt-16 pb-8 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          
+
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2 group">
-              <div className="relative">
-                <img 
-                  src="/assets/images/logo.jpg" 
-                  alt="ParoTeen Logo" 
-                  className="h-10 w-10 rounded-lg object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
+              <span className="font-bold text-xl tracking-tight flex items-center transition-colors duration-300 group-hover:text-paroblue">
+                <img
+                  src="/assets/images/logo.png"
+                  alt="P"
+                  className="h-8 w-8 mt-1 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
                 />
-                <div className="absolute inset-0 rounded-lg bg-paroblue/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm -z-10"></div>
-              </div>
-              <span className="font-bold text-xl tracking-tight transition-colors duration-300 group-hover:text-paroblue">
-                Paro<span className="text-paroblue group-hover:text-paroorange transition-colors duration-300">Teen</span>
+                aroTeen
               </span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
