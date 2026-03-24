@@ -1,204 +1,147 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code, Shield, Brain, Users, Globe2, Trophy } from 'lucide-react';
-import AnimatedBackground from '../components/AnimatedBackground';
+import { ArrowRight, HeartHandshake, Shield, Code2 } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
-import MagnetLines from '../components/MagnetLines';
-import Lightning from '../components/Lightning';
-import Spotlight from '../components/Spotlight';
+
+const helloKidsUrl = (import.meta.env.VITE_HELLO_KIDS_URL as string | undefined) || 'https://kids.paroteen.com';
 
 const Home: React.FC = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleParallax = () => {
-      if (heroRef.current) {
-        const scrolled = window.pageYOffset;
-        const parallax = scrolled * 0.5;
-        heroRef.current.style.transform = `translateY(${parallax}px)`;
-      }
-    };
-
-    window.addEventListener('scroll', handleParallax);
-    return () => window.removeEventListener('scroll', handleParallax);
-  }, []);
+  const recentWork = [
+    {
+      name: 'Hello Kids Initiative Digital Support',
+      whatItDoes:
+        'Supports coordination, communication, and access to educational resources for vulnerable and street-connected children.',
+      role: 'Web development, operational support, and ongoing technical improvements.'
+    }
+  ];
 
   return (
     <div className="w-full">
-      {/* Hero Section */}
-      <section className="relative h-[700px] flex items-center justify-center">
-        {/* Content */}
-
-        <div ref={heroRef} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <ScrollReveal direction="zoom-out" delay={200} duration={1200}>
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
-              <span className="block glow-text cinematic-text">Empowering Your Future</span>
-              <span className="block mt-2">
-                with <span className="gradient-text bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Innovative Tech</span>
-              </span>
+      <section className="relative min-h-[680px] flex items-center justify-center py-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <ScrollReveal direction="zoom-out" duration={1000}>
+            <p className="text-paroblue font-semibold tracking-wide mb-4">ParoTeen Inc.</p>
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white mb-6">
+              Technology Built Around Your Real Needs
             </h1>
-            <p className="text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-blue-50 font-light leading-relaxed">
-              Cutting-edge software, AI tools, and cybersecurity training to businesses and individuals globally.
+            <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+              We design, build, and secure custom digital solutions for organizations that need dependable outcomes, not one-size-fits-all packages.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/services"
-                className="btn-cyber group bg-paroorange hover:bg-orange-600 text-white px-10 py-5 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-2xl hover:shadow-orange-500/50 relative overflow-hidden"
-              >
-                <span className="relative z-10 flex items-center justify-center gap-2">
-                  Explore Services
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-                </span>
+              <Link to="/contact" className="bg-paroblue hover:bg-[#1a7a9d] text-white px-8 py-4 rounded-full font-semibold transition-all">
+                Request a Consultation
               </Link>
-              <Link
-                to="/contact"
-                className="glass group bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-10 py-5 rounded-full font-bold text-lg transition-all transform hover:scale-105 hover:border-white/50 relative overflow-hidden"
-              >
-                <span className="relative z-10">Request a Quote</span>
+              <Link to="/contact" className="glass border border-white/20 hover:border-white/40 text-white px-8 py-4 rounded-full font-semibold transition-all">
+                Let&apos;s Understand Your Needs
               </Link>
             </div>
           </ScrollReveal>
         </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
-          </div>
-        </div>
       </section>
 
-      {/* Stats / Global Reach */}
       <section className="py-16 relative z-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="glass p-6 rounded-2xl border border-white/10">
+            <h3 className="text-2xl font-bold text-white">100+ Clients</h3>
+            <p className="text-slate-400 mt-2">Trusted by 100+ clients</p>
+          </div>
+          <div className="glass p-6 rounded-2xl border border-white/10">
+            <h3 className="text-2xl font-bold text-white">Custom Delivery</h3>
+            <p className="text-slate-400 mt-2">Solutions scoped around your context, team, and goals</p>
+          </div>
+          <div className="glass p-6 rounded-2xl border border-white/10">
+            <h3 className="text-2xl font-bold text-white">Long-Term Partner</h3>
+            <p className="text-slate-400 mt-2">Development, cybersecurity, and operational support</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <ScrollReveal direction="zoom-in" delay={100} duration={1000}>
-              <div className="glass p-8 rounded-2xl shadow-lg border border-white/10 text-center hover-lift group">
-                <div className="bg-blue-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 text-paroblue group-hover:bg-paroblue group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-6">
-                  <Globe2 size={40} />
-                </div>
-                <h3 className="text-3xl font-bold text-white mb-2">Global Presence</h3>
-                <p className="text-slate-400 text-lg">Rwanda, USA, & Asia</p>
-                <div className="mt-4 h-1 w-0 bg-paroblue group-hover:w-full transition-all duration-500 mx-auto"></div>
-              </div>
-            </ScrollReveal>
+          <ScrollReveal direction="up">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Tech That Creates Impact</h2>
+            <div className="glass border border-white/10 rounded-2xl p-8 md:p-10 space-y-5">
+              <p className="text-slate-300 leading-relaxed">ParoTeen Inc. is not just a technology company.</p>
+              <p className="text-slate-300 leading-relaxed">
+                We built this company with a deeper mission: to use technology as a tool for impact. Every project we deliver contributes to something bigger than business.
+              </p>
+              <p className="text-slate-300 leading-relaxed">
+                Through our work, we support the Hello Kids Initiative, a community-driven program that helps vulnerable and street-connected children access education, basic needs, and cultural development.
+              </p>
+              <p className="text-slate-300 leading-relaxed">
+                Today, more than 60 children are supported through this initiative, not by donations alone, but through the work we do with our clients.
+              </p>
+              <p className="text-slate-300 leading-relaxed">
+                When you choose to work with us, you are not only getting a reliable tech partner. You are directly contributing to giving a child access to school, learning materials, and a better future.
+              </p>
+              <p className="text-white font-semibold">This is technology with purpose.</p>
 
-            <ScrollReveal direction="zoom-in" delay={200} duration={1000}>
-              <div className="glass p-8 rounded-2xl shadow-lg border border-white/10 text-center hover-lift group">
-                <div className="bg-orange-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 text-paroorange group-hover:bg-paroorange group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-6">
-                  <Users size={40} />
-                </div>
-                <h3 className="text-3xl font-bold text-white mb-2">100+ Clients</h3>
-                <p className="text-slate-400 text-lg">Trusted by startups & enterprises</p>
-                <div className="mt-4 h-1 w-0 bg-paroorange group-hover:w-full transition-all duration-500 mx-auto"></div>
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Link to="/contact" className="inline-flex items-center justify-center gap-2 bg-paroorange hover:bg-orange-600 text-white px-6 py-3 rounded-full font-semibold transition-colors">
+                  Work With Us. Create Impact.
+                  <ArrowRight size={18} />
+                </Link>
+                <a href={helloKidsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 glass border border-white/20 hover:border-white/40 text-white px-6 py-3 rounded-full font-semibold transition-colors">
+                  Learn More About Hello Kids
+                </a>
               </div>
-            </ScrollReveal>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
 
-            <ScrollReveal direction="zoom-in" delay={300} duration={1000}>
-              <div className="glass p-8 rounded-2xl shadow-lg border border-white/10 text-center hover-lift group">
-                <div className="bg-indigo-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-6">
-                  <Trophy size={40} />
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Some of the organizations we&apos;ve worked with</h2>
+          <p className="text-slate-400 max-w-3xl">
+            Many of our engagements are confidential. We share references and relevant case details during consultation based on your sector and needs.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Recent Work</h2>
+          <div className="grid grid-cols-1 gap-6">
+            {recentWork.map((project) => (
+              <div key={project.name} className="glass border border-white/10 rounded-2xl p-8">
+                <h3 className="text-2xl font-semibold text-white mb-4">{project.name}</h3>
+                <div className="space-y-3 text-slate-300">
+                  <p><span className="text-white font-medium">What it does:</span> {project.whatItDoes}</p>
+                  <p><span className="text-white font-medium">Our role:</span> {project.role}</p>
                 </div>
-                <h3 className="text-3xl font-bold text-white mb-2">Award Winning</h3>
-                <p className="text-slate-400 text-lg">Excellence in Hackathons & Dev</p>
-                <div className="mt-4 h-1 w-0 bg-indigo-600 group-hover:w-full transition-all duration-500 mx-auto"></div>
               </div>
-            </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Core Services Preview */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <ScrollReveal direction="skew-up" duration={1200}>
-            <div className="text-center mb-20">
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Our <span className="gradient-text">Expertise</span>
-              </h2>
-              <div className="h-1.5 w-24 bg-gradient-to-r from-paroblue to-paroorange mx-auto rounded-full mb-6"></div>
-              <p className="mt-6 text-xl text-slate-400 max-w-2xl mx-auto">Tailored technology solutions to drive your growth.</p>
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-10">What We Do</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="glass border border-white/10 rounded-2xl p-6">
+              <Code2 className="text-paroblue mb-4" size={30} />
+              <h3 className="text-xl font-semibold text-white mb-2">Development</h3>
+              <p className="text-slate-400">Web and software systems tailored to your actual workflows.</p>
             </div>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Service 1 */}
-            <ScrollReveal direction="skew-up" delay={100} duration={1000}>
-              <div className="glass rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/10 group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-paroblue/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-                <div className="relative z-10">
-                  <div className="mb-6 p-5 bg-blue-50 rounded-xl w-fit group-hover:bg-paroblue transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-6">
-                    <Code className="text-paroblue group-hover:text-white transition-colors duration-300" size={36} />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-paroblue transition-colors">Website Development</h3>
-                  <p className="text-slate-400 mb-6 leading-relaxed">High-quality, responsive websites built in 1-2 days. Starting at just <span className="text-paroorange font-bold">$100</span>.</p>
-                  <Link to="/services" className="text-paroblue font-semibold flex items-center gap-2 group-hover:gap-4 transition-all hover:text-paroorange">
-                    Learn more <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
-                  </Link>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Service 2 */}
-            <ScrollReveal direction="skew-up" delay={300} duration={1000}>
-              <div className="glass rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/10 group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-                <div className="relative z-10">
-                  <div className="mb-6 p-5 bg-purple-50 rounded-xl w-fit group-hover:bg-purple-600 transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-6">
-                    <Brain className="text-purple-600 group-hover:text-white transition-colors duration-300" size={36} />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-purple-600 transition-colors">AI & Chatbots</h3>
-                  <p className="text-slate-400 mb-6 leading-relaxed">Integrate intelligent chatbots and AI tools into your business processes within 24 hours.</p>
-                  <Link to="/services" className="text-purple-600 font-semibold flex items-center gap-2 group-hover:gap-4 transition-all hover:text-purple-700">
-                    Discover AI <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
-                  </Link>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Service 3 */}
-            <ScrollReveal direction="skew-up" delay={500} duration={1000}>
-              <div className="glass rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/10 group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-                <div className="relative z-10">
-                  <div className="mb-6 p-5 bg-orange-50 rounded-xl w-fit group-hover:bg-paroorange transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-6">
-                    <Shield className="text-paroorange group-hover:text-white transition-colors duration-300" size={36} />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-paroorange transition-colors">Cybersecurity</h3>
-                  <p className="text-slate-400 mb-6 leading-relaxed">Comprehensive awareness training for companies and schools to stay safe online.</p>
-                  <Link to="/services" className="text-paroorange font-semibold flex items-center gap-2 group-hover:gap-4 transition-all hover:text-orange-600">
-                    Secure Now <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
-                  </Link>
-                </div>
-              </div>
-            </ScrollReveal>
+            <div className="glass border border-white/10 rounded-2xl p-6">
+              <Shield className="text-paroorange mb-4" size={30} />
+              <h3 className="text-xl font-semibold text-white mb-2">Cybersecurity</h3>
+              <p className="text-slate-400">Security support and awareness programs for safer teams and systems.</p>
+            </div>
+            <div className="glass border border-white/10 rounded-2xl p-6">
+              <HeartHandshake className="text-parogreen mb-4" size={30} />
+              <h3 className="text-xl font-semibold text-white mb-2">Social Impact</h3>
+              <p className="text-slate-400">Client work that helps fund education and support for vulnerable children.</p>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="max-w-4xl mx-auto px-4 text-center text-white relative z-10">
-          <ScrollReveal direction="zoom-out" duration={1200}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 glow-text">Ready to Transform Your Business?</h2>
-            <p className="text-xl md:text-2xl mb-12 text-slate-400 leading-relaxed">
-              Join hundreds of satisfied clients leveraging ParoTeen's expertise. From websites to AI training, we have you covered.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Link
-                to="/contact"
-                className="btn-cyber bg-indigo-600 text-white px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:bg-indigo-700 transition-all transform hover:scale-105 relative overflow-hidden"
-              >
-                <span className="relative z-10">Contact Us Today</span>
-              </Link>
-              <Link
-                to="/portfolio"
-                className="glass bg-white/10 border-2 border-white/50 px-10 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all transform hover:scale-105 hover:border-white"
-              >
-                View Our Work
-              </Link>
-            </div>
-          </ScrollReveal>
+          <div className="pt-10">
+            <Link to="/contact" className="inline-flex items-center gap-2 bg-paroblue hover:bg-[#1a7a9d] text-white px-7 py-3 rounded-full font-semibold">
+              Request a Consultation
+              <ArrowRight size={18} />
+            </Link>
+          </div>
         </div>
       </section>
     </div>

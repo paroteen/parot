@@ -1,28 +1,55 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
-import GlowLine from '../components/GlowLine';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    organization: '',
     service: 'Website Development',
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
-    setTimeout(() => {
+
+    setIsSubmitting(true);
+    setError(null);
+    const endpoint = (import.meta.env.VITE_CONTACT_ENDPOINT as string | undefined) || '/api/contact';
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
       setIsSubmitted(true);
-    }, 1000);
+      setFormData({
+        name: '',
+        email: '',
+        organization: '',
+        service: 'Website Development',
+        message: ''
+      });
+    } catch {
+      setError('Could not send your message right now. Please call +250783594197.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -35,13 +62,9 @@ const Contact: React.FC = () => {
           <div className="space-y-8">
             <ScrollReveal direction="right">
               <div>
-                <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-                  Get in <span className="gradient-text">Touch</span>
-                </h1>
-                <div className="h-1.5 w-24 bg-gradient-to-r from-paroblue to-paroorange rounded-full mb-6"></div>
+                <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Let&apos;s Understand Your Needs</h1>
                 <p className="text-xl md:text-2xl text-slate-400 leading-relaxed">
-                  Ready to start your next project? We are here to help you grow.
-                  Fill out the form or reach us directly.
+                  Tell us your goals and constraints. We will propose a custom path forward.
                 </p>
               </div>
             </ScrollReveal>
@@ -53,10 +76,8 @@ const Contact: React.FC = () => {
                     <MapPin size={28} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-xl text-white mb-2 group-hover:text-paroblue transition-colors">Our Locations</h3>
-                    <p className="text-slate-400">Kigali, Rwanda (HQ)</p>
-                    <p className="text-slate-400">New York, USA</p>
-                    <p className="text-slate-400">Singapore, Asia</p>
+                    <h3 className="font-bold text-xl text-white mb-2 group-hover:text-paroblue transition-colors">Location</h3>
+                    <p className="text-slate-400">Kigali, Rwanda</p>
                   </div>
                 </div>
 
@@ -65,9 +86,8 @@ const Contact: React.FC = () => {
                     <Mail size={28} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-xl text-white mb-2 group-hover:text-paroorange transition-colors">Email Us</h3>
-                    <p className="text-slate-400">inquiries@paroteen.com</p>
-                    <p className="text-slate-400">support@paroteen.com</p>
+                    <h3 className="font-bold text-xl text-white mb-2 group-hover:text-paroorange transition-colors">Email</h3>
+                    <p className="text-slate-400">info@paroteen.com</p>
                   </div>
                 </div>
 
@@ -76,23 +96,9 @@ const Contact: React.FC = () => {
                     <Phone size={28} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-xl text-white mb-2 group-hover:text-indigo-600 transition-colors">Call Us</h3>
-                    <p className="text-slate-400">+250 788 000 000 (Rwanda)</p>
-                    <p className="text-slate-400">+1 555 123 4567 (Intl)</p>
+                    <h3 className="font-bold text-xl text-white mb-2 group-hover:text-indigo-600 transition-colors">Phone</h3>
+                    <a href="tel:+250783594197" className="text-slate-400 hover:text-white transition-colors">+250783594197</a>
                   </div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Testimonial Snippet */}
-            <ScrollReveal direction="right" delay={400}>
-              <div className="card-cyber bg-gradient-to-br from-paroblue to-parodark text-white p-8 rounded-2xl shadow-2xl italic relative overflow-hidden group">
-                <div className="absolute inset-0 cyber-grid opacity-10"></div>
-                <div className="relative z-10">
-                  <p className="text-lg md:text-xl mb-4 leading-relaxed">
-                    "ParoTeen transformed our online presence in just 48 hours. The AI chatbot they installed has increased our lead generation by 40%."
-                  </p>
-                  <div className="font-bold not-italic text-paroorange">— CEO, TechStart Africa</div>
                 </div>
               </div>
             </ScrollReveal>
@@ -113,7 +119,7 @@ const Contact: React.FC = () => {
                       value={formData.name}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg bg-white/5 border-2 border-white/10 text-white focus:ring-2 focus:ring-paroblue focus:border-paroblue transition-all outline-none hover:border-paroblue/50"
-                      placeholder="John Doe"
+                      placeholder="Your name"
                     />
                   </div>
 
@@ -132,7 +138,20 @@ const Contact: React.FC = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-slate-300 mb-2">Service Interested In</label>
+                    <label htmlFor="organization" className="block text-sm font-medium text-slate-300 mb-2">Organization</label>
+                    <input
+                      type="text"
+                      id="organization"
+                      name="organization"
+                      value={formData.organization}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg bg-white/5 border-2 border-white/10 text-white focus:ring-2 focus:ring-paroblue focus:border-paroblue transition-all outline-none hover:border-paroblue/50"
+                      placeholder="Company or initiative name"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="service" className="block text-sm font-medium text-slate-300 mb-2">What do you need?</label>
                     <select
                       id="service"
                       name="service"
@@ -140,12 +159,11 @@ const Contact: React.FC = () => {
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg bg-white/5 border-2 border-white/10 text-white focus:ring-2 focus:ring-paroblue focus:border-paroblue transition-all outline-none hover:border-paroblue/50 custom-select"
                     >
-                      <option className="bg-gray-900">Website Development ($100)</option>
-                      <option className="bg-gray-900">AI Chatbot Integration</option>
-                      <option className="bg-gray-900">Cybersecurity Training</option>
+                      <option className="bg-gray-900">Website Development</option>
+                      <option className="bg-gray-900">AI Integration</option>
+                      <option className="bg-gray-900">Cybersecurity Support</option>
                       <option className="bg-gray-900">Custom Software / CRM</option>
-                      <option className="bg-gray-900">Hackathon Partnership</option>
-                      <option className="bg-gray-900">AI Corporate Training</option>
+                      <option className="bg-gray-900">Technical Program Delivery</option>
                     </select>
                   </div>
 
@@ -159,16 +177,24 @@ const Contact: React.FC = () => {
                       value={formData.message}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg bg-white/5 border-2 border-white/10 text-white focus:ring-2 focus:ring-paroblue focus:border-paroblue transition-all outline-none hover:border-paroblue/50 resize-none"
-                      placeholder="Tell us about your project..."
+                      placeholder="Tell us your challenge, timeline, and expected outcome."
                     ></textarea>
                   </div>
 
+                  {error && (
+                    <div className="flex items-start gap-2 text-red-300 bg-red-500/10 border border-red-400/30 rounded-lg p-3 text-sm">
+                      <AlertCircle size={16} className="mt-0.5" />
+                      <span>{error}</span>
+                    </div>
+                  )}
+
                   <button
                     type="submit"
-                    className="btn-cyber w-full bg-paroblue hover:bg-[#1a7a9d] text-white font-bold py-4 rounded-lg shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 transform hover:scale-105 relative overflow-hidden"
+                    disabled={isSubmitting}
+                    className="btn-cyber w-full bg-paroblue hover:bg-[#1a7a9d] disabled:opacity-70 text-white font-bold py-4 rounded-lg shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 transform hover:scale-105 relative overflow-hidden"
                   >
                     <Send size={20} className="relative z-10" />
-                    <span className="relative z-10">Send Message</span>
+                    <span className="relative z-10">{isSubmitting ? 'Sending...' : 'Request a Consultation'}</span>
                   </button>
                 </form>
               ) : (
@@ -177,9 +203,9 @@ const Contact: React.FC = () => {
                     <div className="w-24 h-24 bg-green-50 rounded-full flex items-center justify-center text-parogreen mb-6 transform animate-bounce">
                       <CheckCircle size={56} />
                     </div>
-                    <h3 className="text-3xl font-bold text-gray-900 mb-4">Message Sent!</h3>
-                    <p className="text-gray-600 mb-8 text-lg leading-relaxed">
-                      Thank you for contacting ParoTeen. We will get back to you within 24 hours.
+                    <h3 className="text-3xl font-bold text-white mb-4">Message Sent</h3>
+                    <p className="text-slate-300 mb-8 text-lg leading-relaxed">
+                      Thank you. We will get back to you shortly.
                     </p>
                     <button
                       onClick={() => setIsSubmitted(false)}
