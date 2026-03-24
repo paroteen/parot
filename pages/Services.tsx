@@ -3,50 +3,54 @@ import { Link } from 'react-router-dom';
 import { CheckCircle2, Code, MessageSquare, ShieldAlert, Monitor, Users, Database } from 'lucide-react';
 import { Service } from '../types';
 import ScrollReveal from '../components/ScrollReveal';
+import GlowLine from '../components/GlowLine';
+import MagnetLines from '../components/MagnetLines';
+import Lightning from '../components/Lightning';
 
 const Services: React.FC = () => {
   const services: Service[] = [
     {
       id: 'web-dev',
       title: 'Website Development',
-      description: 'Professional websites and web platforms aligned with your business model and growth goals.',
+      description: 'Get a professional, mobile-responsive website built in record time. Perfect for startups and small businesses.',
+      price: 'Starting at $100',
       icon: 'code',
-      features: ['Discovery and planning', 'Responsive UI', 'SEO-ready structure', 'Post-launch support']
+      features: ['Ready in 1-2 days', 'SEO Optimized', 'Mobile Responsive', 'Free 1 month support']
     },
     {
       id: 'ai-chat',
-      title: 'AI and Chatbot Integration',
-      description: 'Practical AI solutions that improve support, internal workflows, and customer response times.',
+      title: 'AI Chatbot Integration',
+      description: 'Enhance customer engagement with intelligent bots that work 24/7.',
       icon: 'bot',
-      features: ['Custom assistant setup', 'Knowledge base integration', 'Channel integration', 'Team onboarding']
+      features: ['GPT/Gemini Integration', 'Custom Knowledge Base', 'Multi-language Support', 'Instant Setup']
     },
     {
       id: 'cyber-training',
-      title: 'Cybersecurity Training and Support',
-      description: 'Security awareness and technical support that reduce risk across teams and systems.',
+      title: 'Cybersecurity Training',
+      description: 'Protect your organization by training your biggest asset: your people.',
       icon: 'shield',
-      features: ['Awareness sessions', 'Policy guidance', 'Security assessments', 'Ongoing advisory']
+      features: ['Phishing Simulations', 'Workshops for Schools', 'Corporate Seminars', 'Security Audits']
     },
     {
       id: 'software',
-      title: 'Custom Software and CRM',
-      description: 'Tailored systems that match your operations instead of forcing your team into generic workflows.',
+      title: 'Custom Software & CRM',
+      description: 'Tailor-made software solutions to streamline your business operations.',
       icon: 'monitor',
-      features: ['Workflow mapping', 'Custom dashboards', 'API integration', 'Scalable architecture']
+      features: ['Custom CRMs', 'Inventory Management', 'Cloud Solutions', 'API Development']
     },
     {
       id: 'hackathons',
-      title: 'Technical Program Delivery',
-      description: 'Hands-on technical programs, events, and mentorship experiences for institutions and communities.',
+      title: 'Hackathon Organization',
+      description: 'We partner with institutions to organize world-class tech events.',
       icon: 'users',
-      features: ['Program design', 'Facilitation', 'Mentorship', 'Operational coordination']
+      features: ['Event Logistics', 'Mentorship', 'Judge Coordination', 'Technical Setup']
     },
     {
       id: 'ai-training',
       title: 'Corporate AI Training',
-      description: 'Practical training that helps teams adopt AI responsibly and effectively.',
+      description: 'Upskill your workforce to leverage Artificial Intelligence effectively.',
       icon: 'db',
-      features: ['Role-based sessions', 'Prompt best practices', 'Governance and ethics', 'Implementation coaching']
+      features: ['Prompt Engineering', 'AI Ethics', 'Productivity Tools', 'Hands-on Workshops']
     }
   ];
 
@@ -66,41 +70,104 @@ const Services: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal direction="fade">
           <div className="text-center mb-20">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Our Services</h1>
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              Our <span className="gradient-text">Services</span>
+            </h1>
             <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
-              Every engagement is scoped around your problem, priorities, and timelines.
+              World-class IT solutions tailored to your needs, delivered with speed and precision.
             </p>
-            <p className="text-slate-300 mt-4 font-medium">No fixed packages. No one-size-fits-all pricing.</p>
           </div>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <ScrollReveal key={service.id} direction="up" delay={index * 100}>
-              <div className="glass rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/5 flex flex-col group relative">
-                <div className="p-8 flex-1 relative z-10">
-                  <div className="text-paroblue mb-6 bg-blue-500/10 group-hover:bg-paroblue group-hover:text-white w-20 h-20 rounded-2xl flex items-center justify-center transition-all duration-500">
-                    {getIcon(service.icon)}
+          {services.map((service, index) => {
+            const getColorClasses = (icon: string) => {
+              switch (icon) {
+                case 'code': return {
+                  text: 'text-paroblue',
+                  bg: 'bg-blue-50',
+                  bgHover: 'group-hover:bg-paroblue',
+                  bgAccent: 'bg-blue-500/5'
+                };
+                case 'bot': return {
+                  text: 'text-purple-600',
+                  bg: 'bg-purple-50',
+                  bgHover: 'group-hover:bg-purple-600',
+                  bgAccent: 'bg-purple-500/5'
+                };
+                case 'shield': return {
+                  text: 'text-paroorange',
+                  bg: 'bg-orange-50',
+                  bgHover: 'group-hover:bg-paroorange',
+                  bgAccent: 'bg-orange-500/5'
+                };
+                case 'monitor': return {
+                  text: 'text-indigo-600',
+                  bg: 'bg-indigo-50',
+                  bgHover: 'group-hover:bg-indigo-600',
+                  bgAccent: 'bg-indigo-500/5'
+                };
+                case 'users': return {
+                  text: 'text-pink-600',
+                  bg: 'bg-pink-50',
+                  bgHover: 'group-hover:bg-pink-600',
+                  bgAccent: 'bg-pink-500/5'
+                };
+                default: return {
+                  text: 'text-green-600',
+                  bg: 'bg-green-50',
+                  bgHover: 'group-hover:bg-green-600',
+                  bgAccent: 'bg-green-500/5'
+                };
+              }
+            };
+            const colors = getColorClasses(service.icon);
+            return (
+              <ScrollReveal key={service.id} direction="up" delay={index * 100}>
+                <div className="glass rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/5 flex flex-col group relative">
+                  <div className={`absolute top-0 right-0 w-40 h-40 ${colors.bgAccent} rounded-full -mr-20 -mt-20 group-hover:scale-150 transition-transform duration-700`}></div>
+                  <div className="p-8 flex-1 relative z-10">
+                    <div className={`${colors.text} mb-6 ${colors.bg} ${colors.bgHover} group-hover:text-white w-20 h-20 rounded-2xl flex items-center justify-center transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-6`}>
+                      {getIcon(service.icon)}
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-paroblue transition-colors">{service.title}</h3>
+                    <p className="text-slate-400 mb-6 leading-relaxed">{service.description}</p>
+
+                    {service.price && (
+                      <div className="inline-block bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-bold mb-6 transform group-hover:scale-105 transition-transform">
+                        {service.price}
+                      </div>
+                    )}
+
+                    <ul className="space-y-3 mb-8">
+                      {service.features.map((feature, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-start text-sm text-slate-400 group-hover:text-white transition-colors"
+                          style={{
+                            animation: `fade-in-left 0.5s ease forwards`,
+                            animationDelay: `${idx * 0.1}s`,
+                            opacity: 0,
+                          }}
+                        >
+                          <CheckCircle2 size={18} className="text-parogreen mr-3 mt-0.5 shrink-0 group-hover:scale-125 transition-transform" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
-                  <p className="text-slate-400 mb-6 leading-relaxed">{service.description}</p>
-                  <ul className="space-y-3 mb-8">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start text-sm text-slate-400">
-                        <CheckCircle2 size={18} className="text-parogreen mr-3 mt-0.5 shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="p-6 bg-white/5 border-t border-white/5 mt-auto relative z-10">
+                    <Link
+                      to="/contact"
+                      className="btn-cyber block w-full text-center bg-transparent border-2 border-paroblue text-white hover:bg-paroblue font-semibold py-3 rounded-lg transition-all transform hover:scale-105 relative overflow-hidden"
+                    >
+                      <span className="relative z-10">Book Now</span>
+                    </Link>
+                  </div>
                 </div>
-                <div className="p-6 bg-white/5 border-t border-white/5 mt-auto relative z-10">
-                  <Link to="/contact" className="block w-full text-center bg-paroblue hover:bg-[#1a7a9d] text-white font-semibold py-3 rounded-lg transition-all">
-                    Request a Consultation
-                  </Link>
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
+              </ScrollReveal>
+            );
+          })}
         </div>
       </div>
     </div>

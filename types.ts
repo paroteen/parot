@@ -3,6 +3,7 @@ export interface Service {
   title: string;
   description: string;
   icon: string;
+  price?: string;
   features: string[];
 }
 
@@ -33,7 +34,7 @@ export interface Project {
 
 export interface Partner {
   name: string;
-  logo: string;
+  logo: string; // Using text fallback or icon for this demo
 }
 
 export enum ChatSender {
