@@ -9,6 +9,18 @@ import Spotlight from '../components/Spotlight';
 
 const Home: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const clientLogos = [
+    { name: 'Tradeline Consult', website: 'https://tradelineconsult.org/', logo: 'https://logo.clearbit.com/tradelineconsult.org' },
+    { name: 'Africa Leadership University', website: 'https://www.alueducation.com/', logo: 'https://logo.clearbit.com/alueducation.com' },
+    { name: 'GAO Tek', website: 'https://www.gaotek.com/', logo: 'https://logo.clearbit.com/gaotek.com' },
+    { name: 'DMC Hospital', website: 'https://www.dreammedicalcenter.rw/', logo: 'https://logo.clearbit.com/dreammedicalcenter.rw' },
+    { name: 'African Newlife Ministries', website: 'https://www.africanewlife.org/', logo: 'https://logo.clearbit.com/africanewlife.org' },
+    { name: 'Mastercard', website: 'https://www.mastercard.com/', logo: 'https://logo.clearbit.com/mastercard.com' },
+    { name: 'Anchor Finance', website: 'https://anchorfinance.rw/', logo: 'https://logo.clearbit.com/anchorfinance.rw' },
+    { name: 'BIMH Ltd', website: 'https://bimhltd.com/', logo: 'https://logo.clearbit.com/bimhltd.com' },
+    { name: 'AKOWS', website: 'https://akwosrw.org/', logo: 'https://logo.clearbit.com/akwosrw.org' },
+    { name: 'Seromba Safaris', website: 'https://serombasafari.com/', logo: 'https://logo.clearbit.com/serombasafari.com' }
+  ];
 
   useEffect(() => {
     const handleParallax = () => {
@@ -204,7 +216,31 @@ const Home: React.FC = () => {
       <section className="py-16 relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Some of the organizations we&apos;ve worked with</h2>
-          <p className="text-slate-400">We keep this minimal and accurate. Client references can be shared during consultation.</p>
+          <div className="logo-marquee-wrap">
+            <div className="logo-marquee-track">
+              {[...clientLogos, ...clientLogos].map((client, index) => (
+                <a
+                  key={`${client.name}-${index}`}
+                  href={client.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="logo-card"
+                  title={client.name}
+                >
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="logo-image"
+                    loading="lazy"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).style.display = 'none';
+                    }}
+                  />
+                  <span className="logo-label">{client.name}</span>
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

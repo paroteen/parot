@@ -31,11 +31,12 @@ const Contact: React.FC = () => {
         body: JSON.stringify(formData)
       });
       if (!response.ok) {
-        throw new Error('Failed');
+        const payload = await response.json().catch(() => ({}));
+        throw new Error(payload?.error || 'Failed');
       }
       setIsSubmitted(true);
-    } catch {
-      setError('Unable to send right now. Please call +250783594197.');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unable to send right now. Please call +250783594197.');
     } finally {
       setIsSubmitting(false);
     }

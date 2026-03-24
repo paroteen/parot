@@ -21,12 +21,13 @@ const Blog: React.FC = () => {
         body: JSON.stringify({ email })
       });
       if (!response.ok) {
-        throw new Error('Failed');
+        const payload = await response.json().catch(() => ({}));
+        throw new Error(payload?.error || 'Failed');
       }
       setSuccess('You are subscribed. Thank you for joining our updates.');
       setEmail('');
-    } catch {
-      setError('Could not complete your subscription. Please try again later.');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not complete your subscription. Please try again later.');
     } finally {
       setLoading(false);
     }
@@ -64,7 +65,7 @@ const Blog: React.FC = () => {
                   placeholder="Enter your email"
                   className="flex-1 px-5 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-paroorange transition-all"
                 />
-                <button type="submit" disabled={loading} className="btn-cyber bg-paroorange hover:bg-orange-600 px-8 py-3 rounded-lg font-bold transition-all transform hover:scale-105 shadow-xl relative overflow-hidden disabled:opacity-70">
+                <button type="submit" disabled={loading} className="btn-cyber bg-paroorange hover:bg-orange-600 px-10 py-3 rounded-lg font-bold transition-all transform hover:scale-105 shadow-xl relative overflow-hidden disabled:opacity-70 min-w-[150px] whitespace-nowrap">
                   <span className="relative z-10">{loading ? 'Submitting...' : 'Subscribe'}</span>
                 </button>
               </form>
