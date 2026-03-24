@@ -54,7 +54,7 @@ const Home: React.FC = () => {
                 to="/contact"
                 className="glass group bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-10 py-5 rounded-full font-bold text-lg transition-all transform hover:scale-105 hover:border-white/50 relative overflow-hidden"
               >
-                <span className="relative z-10">Request a Quote</span>
+                <span className="relative z-10">Request a Consultation</span>
               </Link>
             </div>
           </ScrollReveal>
@@ -131,7 +131,7 @@ const Home: React.FC = () => {
                     <Code className="text-paroblue group-hover:text-white transition-colors duration-300" size={36} />
                   </div>
                   <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-paroblue transition-colors">Website Development</h3>
-                  <p className="text-slate-400 mb-6 leading-relaxed">High-quality, responsive websites built in 1-2 days. Starting at just <span className="text-paroorange font-bold">$100</span>.</p>
+                  <p className="text-slate-400 mb-6 leading-relaxed">High-quality, responsive websites tailored to your business needs and goals.</p>
                   <Link to="/services" className="text-paroblue font-semibold flex items-center gap-2 group-hover:gap-4 transition-all hover:text-paroorange">
                     Learn more <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
                   </Link>
@@ -178,6 +178,48 @@ const Home: React.FC = () => {
 
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <ScrollReveal direction="fade">
+            <div className="glass p-8 md:p-12 rounded-2xl border border-white/10">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Tech That Creates Impact</h2>
+              <p className="text-slate-300 mb-4 leading-relaxed">ParoTeen Inc. is not just a technology company.</p>
+              <p className="text-slate-300 mb-4 leading-relaxed">We built this company with a deeper mission — to use technology as a tool for impact. Every project we deliver contributes to something bigger than business.</p>
+              <p className="text-slate-300 mb-4 leading-relaxed">Through our work, we support the Hello Kids Initiative, a community-driven program that helps vulnerable and street-connected children access education, basic needs, and cultural development.</p>
+              <p className="text-slate-300 mb-4 leading-relaxed">Today, more than 60 children are supported through this initiative — not by donations alone, but through the work we do with our clients.</p>
+              <p className="text-slate-300 mb-4 leading-relaxed">When you choose to work with us, you are not only getting a reliable tech partner. You are directly contributing to giving a child access to school, learning materials, and a better future.</p>
+              <p className="text-white font-semibold mb-8">This is technology with purpose.</p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link to="/contact" className="btn-cyber bg-paroorange hover:bg-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all">
+                  Work With Us. Create Impact.
+                </Link>
+                <a href="https://kids.paroteen.com" target="_blank" rel="noopener noreferrer" className="glass bg-white/10 border-2 border-white/50 px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all text-center">
+                  Learn More About Hello Kids
+                </a>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      <section className="py-16 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Some of the organizations we&apos;ve worked with</h2>
+          <p className="text-slate-400">We keep this minimal and accurate. Client references can be shared during consultation.</p>
+        </div>
+      </section>
+
+      <section className="py-16 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">Recent Work</h2>
+          <div className="glass p-8 rounded-2xl border border-white/10">
+            <h3 className="text-2xl font-bold text-white mb-4">Hello Kids Initiative Digital Support</h3>
+            <p className="text-slate-300 mb-3"><span className="font-semibold text-white">What it does:</span> Supports coordination, communication, and access to education resources for vulnerable and street-connected children.</p>
+            <p className="text-slate-300"><span className="font-semibold text-white">Our role:</span> Development support, cybersecurity guidance, and ongoing technical improvements.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 text-center text-white relative z-10">
           <ScrollReveal direction="zoom-out" duration={1200}>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 glow-text">Ready to Transform Your Business?</h2>
@@ -189,7 +231,7 @@ const Home: React.FC = () => {
                 to="/contact"
                 className="btn-cyber bg-indigo-600 text-white px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:bg-indigo-700 transition-all transform hover:scale-105 relative overflow-hidden"
               >
-                <span className="relative z-10">Contact Us Today</span>
+                <span className="relative z-10">Let&apos;s Understand Your Needs</span>
               </Link>
               <Link
                 to="/portfolio"

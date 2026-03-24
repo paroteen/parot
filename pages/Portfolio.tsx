@@ -7,28 +7,14 @@ const Portfolio: React.FC = () => {
   const projects: Project[] = [
     {
       id: '1',
-      title: 'FinTech Dashboard',
-      category: 'Web Development',
-      description: 'A comprehensive CRM for a local bank in Rwanda.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop'
-    },
-    {
-      id: '2',
-      title: 'EduLearn AI',
-      category: 'AI Solutions',
-      description: 'AI-powered tutoring bot for high school students.',
-      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop'
-    },
-    {
-      id: '3',
-      title: 'SecureNet Audit',
-      category: 'Cybersecurity',
-      description: 'Full security audit and training for a logistics firm.',
-      image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=800&auto=format&fit=crop'
+      title: 'Hello Kids Initiative Digital Support',
+      category: 'Development & Social Impact',
+      description: 'Technology support that helps coordinate education access, basic needs, and cultural development for vulnerable and street-connected children.',
+      image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop'
     }
   ];
 
-  const partners = ['ALU', 'NCSA', 'RIB', 'ShieldTech Hub', 'EyeCyber', 'BSC'];
+  const partners: string[] = [];
 
   return (
     <div className="w-full">
@@ -81,60 +67,21 @@ const Portfolio: React.FC = () => {
         </div>
       </section>
 
-      {/* Hackathons & Partners */}
+      {/* Partnerships */}
       <section className="py-24 relative">
         <div className="absolute inset-0 cyber-grid opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal direction="fade">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Hackathons & <span className="gradient-text">Partnerships</span>
-              </h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Partnerships</h2>
               <div className="h-1.5 w-24 bg-gradient-to-r from-paroblue to-paroorange mx-auto rounded-full mb-6"></div>
               <p className="text-slate-400 max-w-3xl mx-auto text-lg leading-relaxed">
-                We collaborate with leading institutions to foster innovation through intense coding competitions and events.
+                Some collaborations are confidential. We share details where disclosure is permitted.
               </p>
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center justify-items-center">
-            {partners.map((partner, index) => (
-              <ScrollReveal key={partner} direction="up" delay={index * 100}>
-                <div className="glass flex flex-col items-center justify-center p-6 rounded-xl shadow-lg w-full h-32 hover:shadow-2xl transition-all duration-500 group border border-white/10">
-                  <span className="font-bold text-lg text-center text-white/80 group-hover:text-paroblue transition-colors transform group-hover:scale-110">
-                    {partner}
-                  </span>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal direction="up" delay={600}>
-            <div className="mt-20 glass rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row group border border-white/10">
-              <div className="md:w-1/2 relative overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1504384308090-c54be3855833?q=80&w=800&auto=format&fit=crop"
-                  alt="Hackathon Event"
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-paroblue/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              </div>
-              <div className="md:w-1/2 p-10 flex flex-col justify-center bg-white/5">
-                <h3 className="text-3xl font-bold mb-4 text-white group-hover:text-paroblue transition-colors">Upcoming Event: CyberDefense 2025</h3>
-                <p className="text-slate-400 mb-8 leading-relaxed text-lg">
-                  Join us for a 48-hour cybersecurity hackathon in partnership with NCSA. Challenge yourself to protect critical infrastructure simulation.
-                </p>
-                <div className="flex gap-4">
-                  <button className="btn-cyber bg-paroblue text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg relative overflow-hidden">
-                    <span className="relative z-10">Register Now</span>
-                  </button>
-                  <button className="glass border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-bold hover:bg-gray-50 hover:border-paroblue transition-all transform hover:scale-105">
-                    Learn More
-                  </button>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
+          {partners.length === 0 && <div className="text-center text-slate-500">No public partner list published at this time.</div>}
         </div>
       </section>
     </div>

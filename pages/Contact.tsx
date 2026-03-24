@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import GlowLine from '../components/GlowLine';
 
@@ -7,22 +7,38 @@ const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    organization: '',
     service: 'Website Development',
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
-    setTimeout(() => {
+    setError('');
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      if (!response.ok) {
+        throw new Error('Failed');
+      }
       setIsSubmitted(true);
-    }, 1000);
+    } catch {
+      setError('Unable to send right now. Please call +250783594197.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -77,22 +93,8 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="font-bold text-xl text-white mb-2 group-hover:text-indigo-600 transition-colors">Call Us</h3>
-                    <p className="text-slate-400">+250 788 000 000 (Rwanda)</p>
-                    <p className="text-slate-400">+1 555 123 4567 (Intl)</p>
+                    <a href="tel:+250783594197" className="text-slate-400 hover:text-white transition-colors">+250783594197</a>
                   </div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Testimonial Snippet */}
-            <ScrollReveal direction="right" delay={400}>
-              <div className="card-cyber bg-gradient-to-br from-paroblue to-parodark text-white p-8 rounded-2xl shadow-2xl italic relative overflow-hidden group">
-                <div className="absolute inset-0 cyber-grid opacity-10"></div>
-                <div className="relative z-10">
-                  <p className="text-lg md:text-xl mb-4 leading-relaxed">
-                    "ParoTeen transformed our online presence in just 48 hours. The AI chatbot they installed has increased our lead generation by 40%."
-                  </p>
-                  <div className="font-bold not-italic text-paroorange">— CEO, TechStart Africa</div>
                 </div>
               </div>
             </ScrollReveal>
@@ -132,6 +134,19 @@ const Contact: React.FC = () => {
                   </div>
 
                   <div>
+                    <label htmlFor="organization" className="block text-sm font-medium text-slate-300 mb-2">Organization</label>
+                    <input
+                      type="text"
+                      id="organization"
+                      name="organization"
+                      value={formData.organization}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg bg-white/5 border-2 border-white/10 text-white focus:ring-2 focus:ring-paroblue focus:border-paroblue transition-all outline-none hover:border-paroblue/50"
+                      placeholder="Company or initiative"
+                    />
+                  </div>
+
+                  <div>
                     <label htmlFor="service" className="block text-sm font-medium text-slate-300 mb-2">Service Interested In</label>
                     <select
                       id="service"
@@ -140,7 +155,7 @@ const Contact: React.FC = () => {
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg bg-white/5 border-2 border-white/10 text-white focus:ring-2 focus:ring-paroblue focus:border-paroblue transition-all outline-none hover:border-paroblue/50 custom-select"
                     >
-                      <option className="bg-gray-900">Website Development ($100)</option>
+                      <option className="bg-gray-900">Website Development</option>
                       <option className="bg-gray-900">AI Chatbot Integration</option>
                       <option className="bg-gray-900">Cybersecurity Training</option>
                       <option className="bg-gray-900">Custom Software / CRM</option>
@@ -162,13 +177,20 @@ const Contact: React.FC = () => {
                       placeholder="Tell us about your project..."
                     ></textarea>
                   </div>
+                  {error && (
+                    <div className="flex items-start gap-2 text-red-300 bg-red-500/10 border border-red-400/30 rounded-lg p-3 text-sm">
+                      <AlertCircle size={16} className="mt-0.5" />
+                      <span>{error}</span>
+                    </div>
+                  )}
 
                   <button
                     type="submit"
-                    className="btn-cyber w-full bg-paroblue hover:bg-[#1a7a9d] text-white font-bold py-4 rounded-lg shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 transform hover:scale-105 relative overflow-hidden"
+                    disabled={isSubmitting}
+                    className="btn-cyber w-full bg-paroblue hover:bg-[#1a7a9d] disabled:opacity-70 text-white font-bold py-4 rounded-lg shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 transform hover:scale-105 relative overflow-hidden"
                   >
                     <Send size={20} className="relative z-10" />
-                    <span className="relative z-10">Send Message</span>
+                    <span className="relative z-10">{isSubmitting ? 'Sending...' : 'Request a Consultation'}</span>
                   </button>
                 </form>
               ) : (

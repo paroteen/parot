@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X, Globe, Phone } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -88,12 +88,13 @@ const Navbar: React.FC = () => {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-paroblue group-hover:w-full transition-all duration-300"></span>
               </Link>
             ))}
-            <Link
-              to="/contact"
-              className="btn-cyber bg-paroblue hover:bg-[#1a7a9d] text-white px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105 relative overflow-hidden"
+            <a
+              href="tel:+250783594197"
+              className="btn-cyber bg-paroblue hover:bg-[#1a7a9d] text-white px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105 relative overflow-hidden inline-flex items-center gap-2"
             >
-              <span className="relative z-10">Get a Quote</span>
-            </Link>
+              <Phone size={14} />
+              <span className="relative z-10">+250783594197</span>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -140,13 +141,12 @@ const Navbar: React.FC = () => {
                 <Globe size={16} />
                 <span>Rwanda • USA • Asia</span>
               </div>
-              <Link
-                to="/contact"
-                onClick={closeMenu}
+              <a
+                href="tel:+250783594197"
                 className="block w-full text-center bg-paroorange hover:bg-orange-600 text-white px-5 py-3 rounded-lg font-bold transition-colors"
               >
-                Request a Quote
-              </Link>
+                Call +250783594197
+              </a>
             </div>
           </div>
         </div>

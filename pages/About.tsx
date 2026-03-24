@@ -93,18 +93,34 @@ const About: React.FC = () => {
             </h2>
             <GlowLine className="max-w-md mx-auto mb-12" />
           </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[1, 2, 3, 4].map((i) => (
-              <ScrollReveal key={i} direction="up" delay={i * 100}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                name: 'Olivier Collins ITANGISHAKA',
+                role: 'Founder & Cybersecurity Lead',
+                vision: 'Vision: cybersecurity, innovation, and social impact'
+              },
+              {
+                name: 'MUGISHA Yves',
+                role: 'Technical Team / Engineering',
+                vision: 'Focus: building and maintaining solutions'
+              },
+              {
+                name: 'Gahingayire Eugene',
+                role: 'Social Impact Lead',
+                vision: 'Leads Hello Kids Initiative and works directly with children'
+              }
+            ].map((member, i) => (
+              <ScrollReveal key={member.name} direction="up" delay={(i + 1) * 100}>
                 <div className="glass p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group border border-white/10">
-                  <div className="w-28 h-28 bg-gray-200 rounded-full mx-auto mb-6 overflow-hidden transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                    <img src={`https://picsum.photos/seed/face${i}/200/200`} alt="Team Member" className="w-full h-full object-cover" />
+                  <div className="w-28 h-28 bg-white/10 rounded-full mx-auto mb-6 flex items-center justify-center text-white text-2xl font-bold transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                    {member.name.split(' ').map((w) => w[0]).slice(0, 2).join('')}
                   </div>
-                  <h3 className="font-bold text-xl mb-2 group-hover:text-paroblue transition-colors text-white">Tech Leader {i}</h3>
-                  <p className="text-paroblue text-sm mb-4 font-semibold">Senior Developer</p>
+                  <h3 className="font-bold text-xl mb-2 group-hover:text-paroblue transition-colors text-white">{member.name}</h3>
+                  <p className="text-paroblue text-sm mb-4 font-semibold">{member.role}</p>
                   <div className="flex justify-center items-center text-slate-500 text-sm gap-2 group-hover:text-paroblue transition-colors">
                     <Globe size={14} />
-                    <span>{i % 2 === 0 ? 'Rwanda' : 'USA'}</span>
+                    <span>{member.vision}</span>
                   </div>
                 </div>
               </ScrollReveal>
