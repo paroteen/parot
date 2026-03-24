@@ -76,10 +76,8 @@ const Contact: React.FC = () => {
                     <MapPin size={28} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-xl text-white mb-2 group-hover:text-paroblue transition-colors">Our Locations</h3>
-                    <p className="text-slate-400">Kigali, Rwanda (HQ)</p>
-                    <p className="text-slate-400">USA</p>
-                    <p className="text-slate-400">Asia</p>
+                    <h3 className="font-bold text-xl text-white mb-2 group-hover:text-paroblue transition-colors">Location</h3>
+                    <p className="text-slate-400">Kigali, Rwanda</p>
                   </div>
                 </div>
 
